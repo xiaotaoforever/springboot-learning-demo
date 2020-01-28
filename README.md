@@ -1,2 +1,3 @@
 # springboot-learning-demo
 - [springboot-learning-demo-mystarter](https://github.com/xiaotaoforever/springboot-learning-demo/tree/master/springboot-learning-demo-mystarter) 自定义开发一个starter
+- [springboot-learning-demo-rabbitmq](https://github.com/xiaotaoforever/springboot-learning-demo/tree/master/springboot-learning-demo-rabbitmq) rabbitmq基础讲解，springboot和rabbitmq集成demo，并且模拟一个用户注册后添加积分和发送各类型通知信息的应用场景，以便更好地理解rabbitmq。
