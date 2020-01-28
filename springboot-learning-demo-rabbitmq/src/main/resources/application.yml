@@ -1,1 +1,18 @@
+spring:
+  rabbitmq:
+    host: localhost
+    username: guest
+    password: guest
+    port: 5672
+    publisher-confirm-type: simple # 开启confirms回调 P -> Exchange
+    publisher-returns: true # 开启returnedMessage回调 Exchange -> Queue
+
+    # 设置手动确认(ack) Queue -> C
+    listener:
+      simple:
+        acknowledge-mode: auto
+        prefetch: 1
+        default-requeue-rejected: false
+#        retry:
+#          enabled: true
 
