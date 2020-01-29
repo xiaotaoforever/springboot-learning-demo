@@ -15,12 +15,9 @@ public class Producer {
 
     public void testSend4Topic() throws InterruptedException {
         String msg = "hello, Spring boot amqp testSend4Topic";
-        this.amqpTemplate.convertAndSend("spring.test.exchange", "x.b", msg);
-
+        this.amqpTemplate.convertAndSend("spring.test.exchange", "x.b.c", msg);
         //使用错误的exchange，会执行rabbitTemplate.setConfirmCallback中设定的回调方法
         //this.amqpTemplate.convertAndSend("spring.test.exchange"+111, "x.b", msg);
-
-
     }
 
     public void testSend4Topic2() throws InterruptedException {
@@ -59,4 +56,5 @@ public class Producer {
             return message;
         });
     }
+
 }

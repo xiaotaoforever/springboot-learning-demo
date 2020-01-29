@@ -12,7 +12,6 @@ import org.springframework.messaging.handler.annotation.Headers;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.util.Map;
 
 @Component
@@ -21,7 +20,7 @@ public class RegisterFanoutListener {
 
     @RabbitListener(bindings = @QueueBinding(value = @Queue("register.mail"), exchange = @Exchange(value = "register.fanout.exchange", type = ExchangeTypes.FANOUT)))
     @RabbitHandler
-    public void onMessage(@Payload Mail mail, @Headers Map<String, Object> headers, Channel channel, Message message) throws IOException {
+    public void onMessage(@Payload Mail mail, @Headers Map<String, Object> headers, Channel channel, Message message) {
         MessageProperties properties = message.getMessageProperties();
         long tag = properties.getDeliveryTag();
         /*boolean success = true;
@@ -37,12 +36,12 @@ public class RegisterFanoutListener {
     @RabbitListener(bindings = @QueueBinding(value = @Queue("register.push"), exchange = @Exchange(value = "register.fanout.exchange", type = ExchangeTypes.FANOUT)))
     @RabbitHandler
     //@RabbitAck /*消费者自动提交时，可通过aop形式确认，减少重复代码*/
-    public void onMessage2(@Payload Mail mail, @Headers Map<String, Object> headers, Channel channel, Message message) throws IOException {
+    public void onMessage2(@Payload Mail mail, @Headers Map<String, Object> headers, Channel channel, Message message) {
         try {
             log.info("==========来自{}的消息: {}", headers.get(AmqpHeaders.CONSUMER_QUEUE), mail.toString());
-            int i= 1/0;//throw exception
+            int i = 1 / 0;//throw exception
         } catch (Exception e) {
-            log.error("eeee",e);
+            log.error("eeee", e);
             throw e;
         }
 
